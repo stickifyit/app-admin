@@ -2,10 +2,13 @@ import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import StateLabel from './StateLabel'
 import { Order } from '../app/orders'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+import { Link } from 'expo-router'
 
 export default function OrderItem({order}:{order:Order}) {
   return (
-    <View 
+    <Link href={`/orders/order/${order._id}`} asChild>
+    <TouchableOpacity
     style={styles.container}
     >
         <View style={{ flex:1 }}>
@@ -18,9 +21,19 @@ export default function OrderItem({order}:{order:Order}) {
         </View>
         <View style={{ alignItems:"flex-end" }}>
             <StateLabel state={order.state}/>
-            <Text style={styles.date}>12/17 - 3:07</Text>
+            <Text style={styles.date}>{
+            new Intl.DateTimeFormat('en-US', {
+                          year: '2-digit',
+                          month: '2-digit',
+                          day: '2-digit',
+                          hour: '2-digit',
+                          minute: '2-digit',
+                        }).format(new Date(order?.createdAt)) 
+            }
+            </Text>
         </View>
-    </View>
+    </TouchableOpacity>
+    </Link>
   )
 }
 
@@ -44,7 +57,7 @@ const styles = StyleSheet.create({
 
     },
     name:{
-        fontSize: 12,
+        fontSize: 10,
         color: '#333',
     },
     price:{

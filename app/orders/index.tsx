@@ -4,6 +4,7 @@ import OrderItem from '../../components/OrderItem'
 import axios from 'axios'
 import { BackendHost } from '../../constent/backend'
 import { useOrders } from '../../store/orders'
+import { Stack } from 'expo-router'
 
 type Props = {}
 
@@ -82,6 +83,7 @@ const Index = (props: Props) => {
   },[update])
   return (
     <ScrollView style={{ flex: 1 , gap: 6 , paddingTop: 6 }}>
+      <Stack.Screen options={{title:"Orders Page"}}/>
       {
         orders.map((_, index) => {
           return (

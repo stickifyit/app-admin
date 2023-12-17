@@ -7,6 +7,7 @@ import { useOrders } from '../store/orders'
 
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
+import { Ionicons } from '@expo/vector-icons'
 
 
 const Layout = () => {
@@ -44,13 +45,17 @@ const Layout = () => {
             {
                 headerTitle: 'Home Page',
                 tabBarLabel: 'Home',
+                tabBarLabelStyle:{color:"#333"},
+                tabBarIcon: ({ color,focused }) => <Ionicons name="home" size={24} color={focused?"#444":"#aaa"} />,
             }
         }
         />
-        <Tabs.Screen name="orders/index" options={
+        <Tabs.Screen name="orders" options={
             {
-                headerTitle: 'Orders Page',
-                tabBarLabel: 'Orders',
+              headerShown: false,
+              tabBarLabelStyle:{color:"#333"},
+              tabBarLabel: 'Orders',
+              tabBarIcon: ({ color,focused }) => <Ionicons name="list" size={24} color={focused?"#444":"#aaa"} />,
             }
         }
         />
