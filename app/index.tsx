@@ -10,7 +10,7 @@ const index = (props: Props) => {
       <View style={{ flex: 1}}>
         <View style={{ padding: 16 }}>
             <Text style={h4}>Last week</Text>
-            <Text style={h1}>0.000 Dh</Text>
+            <Text style={h1}>0.00 Dh</Text>
             <View style={styles.container}>
               <Text style={h4}>Orders</Text>
               <Text style={h3}>5</Text>
