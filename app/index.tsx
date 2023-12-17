@@ -2,10 +2,9 @@ import { Button, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Link } from 'expo-router'
 import { h1, h3, h4 } from '../constent/style'
-
 type Props = {}
 
-const index = (props: Props) => {
+const Index = (props: Props) => {
   return (
       <View style={{ flex: 1}}>
         <View style={{ padding: 16 }}>
@@ -40,4 +39,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default index
+export default Index

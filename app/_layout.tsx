@@ -1,8 +1,34 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Stack, Tabs } from 'expo-router'
+import socket from '../lib/socket'
+import { useOrders } from '../store/orders'
 
-const _layout = () => {
+
+import * as Device from 'expo-device';
+import * as Notifications from 'expo-notifications';
+
+
+const Layout = () => {
+  const {setUpdate} = useOrders()
+
+
+  useEffect(()=>{
+    const Refresh = ()=>{
+      setUpdate(Math.random())
+    }
+    socket.on("add order",Refresh)
+
+    return ()=>{
+        socket.off("add order",Refresh)
+    }
+},[socket])
+
+
+
+
+
+
   return (
     // <Stack>
     //     <Stack.Screen name="index" options={{ title: 'Home' }} />
@@ -32,4 +58,4 @@ const _layout = () => {
   )
 }
 
-export default _layout
+export default Layout
